@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/murasanca/Siren/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/murasanca/Siren/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+# <a href="https://play.google.com/store/apps/details?id=com.murasanca.Siren" target="_blank">Siren</a>
+It's not road rage if you have Siren.
+<hr>
+Try something new.
+<br>
+Put an end to your boredom.
+<br><br>
+Looking for something new to watch? Tired of scrolling through the same trio of books you downloaded but still don't want to read? Did your score reach the top in the game you played most often? It's time to broaden your horizons.
+<br><br>
+Watch something new.
+<br>
+Enhance what you watch with these alternative options, from siren classics and must-know sirens to popular sirens and competitions we love.
+<br><br>
+Play something new.
+<br>
+If you need a new game challenge, why not try Siren?
+<br><br>
+Listen to something new.
+<br>
+Forget about the top of the charts, this year's voice is hidden in the sirens. Whether you want to learn a new siren or take care of the last one you heard or get away from the real world as you need it, this application is what you are looking for.
+<br><br>
+Read something new.
+<br>
+Make the entertainment educational and choose a good siren, a recorded voice, or a siren that summarizes a nonfiction topic; they may come in handy in the next knowledge game.
+<br><br>
+If you sound siren, you can give Siren 5 stars.
+<hr>
+<a href="mailto:murasanca@pm.me" target="_blank">murasanca@pm.me</a>
+<br><br>
+Murat Sancak
+<br>
+∞
