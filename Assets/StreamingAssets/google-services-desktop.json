@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1074690877513",
+    "project_id": "siren-51865717",
+    "storage_bucket": "siren-51865717.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074690877513:android:4e41d00bbf574cefbcf798",
+        "android_client_info": {
+          "package_name": "com.murasanca.Siren"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074690877513-93c81g7ueraaiiadkdl33kb6lvkbv2eg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYiGVm79wgLv06pC3ndWhJGxM4SchDQE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074690877513-93c81g7ueraaiiadkdl33kb6lvkbv2eg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

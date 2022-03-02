@@ -1,0 +1,9 @@
+lastUpgrade=01014
+proj.pluginVersion=0.10.14
+proj.AppId=1074690877513
+and.BundleId=com.murasanca.Siren
+proj.classDir=Assets%2fScripts
+proj.ConstantsClassName=PGS
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--app_id--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e1074690877513%3c%2fstring%3e%0d%0a++%3c%21--package_name--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.murasanca.Siren%3c%2fstring%3e%0d%0a++%3c%21--achievement+8%2b--%3e%0d%0a++%3cstring+name%3d%22achievement_8%22+translatable%3d%22false%22%3eCgkIydDFxKMfEAIQAg%3c%2fstring%3e%0d%0a++%3c%21--achievement+8--%3e%0d%0a++%3cstring+name%3d%22achievement_8_2%22+translatable%3d%22false%22%3eCgkIydDFxKMfEAIQAw%3c%2fstring%3e%0d%0a++%3c%21--achievement+4--%3e%0d%0a++%3cstring+name%3d%22achievement_4%22+translatable%3d%22false%22%3eCgkIydDFxKMfEAIQBA%3c%2fstring%3e%0d%0a++%3c%21--achievement+3--%3e%0d%0a++%3cstring+name%3d%22achievement_3%22+translatable%3d%22false%22%3eCgkIydDFxKMfEAIQBQ%3c%2fstring%3e%0d%0a++%3c%21--achievement+2--%3e%0d%0a++%3cstring+name%3d%22achievement_2%22+translatable%3d%22false%22%3eCgkIydDFxKMfEAIQBg%3c%2fstring%3e%0d%0a++%3c%21--achievement+1--%3e%0d%0a++%3cstring+name%3d%22achievement_1%22+translatable%3d%22false%22%3eCgkIydDFxKMfEAIQBw%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Siren--%3e%0d%0a++%3cstring+name%3d%22leaderboard_siren%22+translatable%3d%22false%22%3eCgkIydDFxKMfEAIQAQ%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=1074690877513-93c81g7ueraaiiadkdl33kb6lvkbv2eg.apps.googleusercontent.com
+android.SetupDone=true
