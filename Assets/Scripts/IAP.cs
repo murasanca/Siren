@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.SceneManagement;
 
 namespace murasanca
 {
@@ -43,13 +44,15 @@ namespace murasanca
             DontDestroyOnLoad(iap);
         }
 
-        private void Start()
+        private void Start() => Initialize();
+
+        // Murat Sancak
+
+        private void Initialize()
         {
             (cB = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance())).AddProduct(a, ProductType.NonConsumable);
             UnityPurchasing.Initialize(iap, cB);
         }
-
-        // Murat Sancak
 
         public static void Checkmark()
         {
@@ -77,7 +80,9 @@ namespace murasanca
         public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs pEA) // pEA: Purchase Event Args.
         {
             Monetization.Hide();
-            Settings.Close();
+
+            if (SceneManager.GetActiveScene().buildIndex is 2) // Settings.
+                Settings.Close();
 
             return PurchaseProcessingResult.Complete;
         }
@@ -88,16 +93,14 @@ namespace murasanca
             IAP.sC = sC;
         }
 
-        public void OnInitializeFailed(InitializationFailureReason iFR) // iFR: Purchase Failure Reason.
-        {
-            (cB = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance())).AddProduct(a, ProductType.NonConsumable);
-            UnityPurchasing.Initialize(iap, cB);
-        }
+        public void OnInitializeFailed(InitializationFailureReason iFR) => Initialize(); // iFR: Purchase Failure Reason.
 
         public void OnPurchaseFailed(Product p, PurchaseFailureReason pFR) // p: Product, pFR: Purchase Failure Reason.
         {
             Handheld.Vibrate();
-            Settings.Close();
+
+            if (SceneManager.GetActiveScene().buildIndex is 2) // Settings.
+                Settings.Close();
         }
     }
 }

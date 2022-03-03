@@ -34,9 +34,9 @@ namespace murasanca
         private void Update()
         {
             if (Input.GetKey(KeyCode.Escape))
-                if (SceneManager.GetActiveScene().buildIndex is 0)
+                if (SceneManager.GetActiveScene().buildIndex is 0) // Siren.
                     Load(1);
-                else
+                else // Close || Settings.
                     Load(0);
         }
 

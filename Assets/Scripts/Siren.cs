@@ -180,12 +180,12 @@ namespace murasanca
 
         public void Star() => Application.OpenURL("market://details?id=com.murasanca.Siren");
 
-        public static void Coin(int coin)
+        public static void Coin(int c) // c: Coin.
         {
-            Preferences.C += coin;
+            Preferences.C += c;
             cT.GetComponent<TextMeshProUGUI>().text = Preferences.String();
 
-            if (Mathf.Sign(coin) is -1)
+            if (Mathf.Sign(c) is -1)
             {
                 PG.Achievement(Sound.p);
                 PG.Leaderboard();
