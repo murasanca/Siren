@@ -44,7 +44,7 @@ namespace murasanca
 
         private static IEnumerator Double(int s) // s: Scene.
         {
-            Time.timeScale = 1;
+            Preferences.TS(1);
 
             a.Play("Scene Canvas 0");
             a.SetTrigger("Scene Canvas 0");
@@ -56,12 +56,12 @@ namespace murasanca
 
             SceneManager.LoadScene(s);
 
-            Time.timeScale = Mathf.Abs(Preferences.P);
+            Preferences.TS();
         }
 
         private static IEnumerator Single()
         {
-            Time.timeScale = 1;
+            Preferences.TS(1);
 
             a.SetTrigger("Scene Canvas 1");
             a.Play("Scene Canvas 1");
@@ -70,7 +70,7 @@ namespace murasanca
 
             a.ResetTrigger("Scene Canvas 1");
 
-            Time.timeScale = Mathf.Abs(Preferences.P);
+            Preferences.TS();
         }
 
         // Murat Sancak

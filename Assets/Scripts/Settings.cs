@@ -213,7 +213,7 @@ namespace murasanca
 
         public void PV() // PV: Pitch Value.
         {
-            Time.timeScale = Mathf.Abs(Preferences.P = Sound.BP = Sound.GP = Sound.OP = Sound.RP = pS.GetComponent<Slider>().value);
+            Preferences.P = Sound.BP = Sound.GP = Sound.OP = Sound.RP = pS.GetComponent<Slider>().value;
 
             pB.GetComponent<Button>().interactable = Preferences.P is not 1;
             pT.GetComponent<TextMeshProUGUI>().text = Preferences.P.ToString("F2");

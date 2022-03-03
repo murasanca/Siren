@@ -33,7 +33,7 @@ namespace murasanca
 
         public static bool
             iIL = false, // iIL: is Interstitial Loaded.
-            iRL = false, // iIL: is Rewarded Loaded.
+            iRL = false, // iRL: is Rewarded Loaded.
 
             // iBS = false, // iBS: Is Banner Showing.
             // iIS = false, // iIS: Is Interstitial Showing.

@@ -19,7 +19,7 @@ namespace murasanca
             get
             {
                 if (!HasKey("p"))
-                    P = Time.timeScale = 1;
+                    Time.timeScale = Mathf.Abs(P = 1);
                 return GetFloat("p", p);
             }
             set
@@ -27,7 +27,7 @@ namespace murasanca
                 SetFloat("p", value);
                 Save();
 
-                Time.timeScale = p;
+                Time.timeScale = Mathf.Abs(P);
             }
         }
 
@@ -77,6 +77,10 @@ namespace murasanca
 
             Time.timeScale = 1;
         }
+
+        public static void TS() => Time.timeScale = P; // TS: Time Scale, ts: Time Scale.
+
+        public static void TS(float ts) => Time.timeScale = ts; // TS: Time Scale, ts: Time Scale.
     }
 }
 
