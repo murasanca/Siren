@@ -30,7 +30,6 @@ namespace murasanca
                 else
                     return null;
             }
-
         }
 
         // Murat Sancak
