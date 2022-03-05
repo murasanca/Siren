@@ -76,6 +76,7 @@ namespace murasanca
 
             pB.GetComponent<Button>().interactable = Preferences.P is 1;
             vB.GetComponent<Button>().interactable = Preferences.V is .64f;
+
             pS.GetComponent<Slider>().value = Preferences.P;
             vS.GetComponent<Slider>().value = Preferences.V;
         }
@@ -231,8 +232,7 @@ namespace murasanca
 
         public void VV() // VV: Volume Value.
         {
-            Preferences.V = Sound.BS = Sound.GS = Sound.OS = Sound.RS = vS.GetComponent<Slider>().value;
-
+            Preferences.V = Sound.BV = Sound.GV = Sound.OV = Sound.RV = vS.GetComponent<Slider>().value;
             vB.GetComponent<Button>().interactable = Preferences.V is not .64f;
             vT.GetComponent<TextMeshProUGUI>().text = Preferences.V.ToString("F2");
         }

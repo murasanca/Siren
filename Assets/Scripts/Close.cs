@@ -69,7 +69,7 @@ namespace murasanca
 #endif
         }
 
-        public void Reload() => Preferences.Reload();
+        public void Reload() => Preferences.Delete();
     }
 }
 

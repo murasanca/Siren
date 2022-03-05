@@ -19,15 +19,13 @@ namespace murasanca
             get
             {
                 if (!HasKey("p"))
-                    Time.timeScale = Mathf.Abs(P = 1);
+                    P = 1;
                 return GetFloat("p", p);
             }
             set
             {
                 SetFloat("p", value);
                 Save();
-
-                Time.timeScale = Mathf.Abs(P);
             }
         }
 
@@ -70,17 +68,11 @@ namespace murasanca
             return C.ToString();
         }
 
-        public static void Reload()
+        public static void Delete()
         {
             DeleteKey("p");
             DeleteKey("v");
-
-            Time.timeScale = 1;
         }
-
-        public static void TS() => Time.timeScale = P; // TS: Time Scale, ts: Time Scale.
-
-        public static void TS(float ts) => Time.timeScale = ts; // TS: Time Scale, ts: Time Scale.
     }
 }
 

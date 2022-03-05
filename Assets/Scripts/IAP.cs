@@ -54,6 +54,14 @@ namespace murasanca
             UnityPurchasing.Initialize(iap, cB);
         }
 
+        public static bool HR() // HR: Has Receipt, p: Product.
+        {
+            if (II)
+                return Product.hasReceipt;
+            else
+                return false;
+        }
+
         public static void Checkmark()
         {
             if (II)
@@ -67,22 +75,14 @@ namespace murasanca
                 Handheld.Vibrate();
         }
 
-        public static bool HR() // HR: Has Receipt, p: Product.
-        {
-            if (II)
-                return Product.hasReceipt;
-            else
-                return false;
-        }
-
         // Murat Sancak
 
         public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs pEA) // pEA: Purchase Event Args.
         {
-            Monetization.Hide();
-
             if (SceneManager.GetActiveScene().buildIndex is 2) // Settings.
                 Settings.Close();
+
+            Monetization.Hide();
 
             return PurchaseProcessingResult.Complete;
         }

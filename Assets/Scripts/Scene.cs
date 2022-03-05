@@ -44,8 +44,6 @@ namespace murasanca
 
         private static IEnumerator Double(int s) // s: Scene.
         {
-            Preferences.TS(1);
-
             a.Play("Scene Canvas 0");
             a.SetTrigger("Scene Canvas 0");
 
@@ -55,22 +53,16 @@ namespace murasanca
             a.ResetTrigger("Scene Canvas 0");
 
             SceneManager.LoadScene(s);
-
-            Preferences.TS();
         }
 
         private static IEnumerator Single()
         {
-            Preferences.TS(1);
-
             a.SetTrigger("Scene Canvas 1");
             a.Play("Scene Canvas 1");
 
             yield return wFS64;
 
             a.ResetTrigger("Scene Canvas 1");
-
-            Preferences.TS();
         }
 
         // Murat Sancak

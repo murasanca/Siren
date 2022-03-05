@@ -23,43 +23,43 @@ namespace murasanca
         public static bool IOP => oAS.isPlaying; // IOP: Is Orange Playing.
         public static bool IRP => rAS.isPlaying; // IRP: Is Red Playing.
 
-        public static float BP
+        public static float BP // BP: Blue Pitch.
         {
             get => bAS.pitch;
             set => bAS.pitch = value;
         }
-        public static float GP
+        public static float GP // GP: Green Pitch.
         {
             get => gAS.pitch;
             set => gAS.pitch = value;
         }
-        public static float OP
+        public static float OP // OP: Orange Pitch.
         {
             get => oAS.pitch;
             set => oAS.pitch = value;
         }
-        public static float RP
+        public static float RP // RP: Red Pitch.
         {
             get => rAS.pitch;
             set => rAS.pitch = value;
         }
 
-        public static float BS
+        public static float BV // BV: Blue Volume.
         {
             get => bAS.volume;
             set => bAS.volume = value;
         }
-        public static float GS
+        public static float GV // GV: Green Volume.
         {
             get => gAS.volume;
             set => gAS.volume = value;
         }
-        public static float OS
+        public static float OV // OV: Orange Volume.
         {
             get => oAS.volume;
             set => oAS.volume = value;
         }
-        public static float RS
+        public static float RV // RV: Red Volume.
         {
             get => rAS.volume;
             set => rAS.volume = value;
@@ -79,6 +79,12 @@ namespace murasanca
             gAS = GameObject.Find("Green Audio Source").GetComponent<AudioSource>();
             oAS = GameObject.Find("Orange Audio Source").GetComponent<AudioSource>();
             rAS = GameObject.Find("Red Audio Source").GetComponent<AudioSource>();
+        }
+
+        private void Start()
+        {
+            bAS.pitch = gAS.pitch = oAS.pitch = rAS.pitch = Preferences.P;
+            bAS.volume = gAS.volume = oAS.volume = rAS.volume = Preferences.V;
         }
 
         // Murat Sancak
