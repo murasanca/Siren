@@ -4,268 +4,261 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-namespace murasanca
+public class Monetization:MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    public class Monetization : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
-    {
 #if UNITY_IOS
-        private string const
-            b = "banner", // b: Banner.
-            g = "3767230", // g: Game.
-            i = "video", // i: Interstitial.
-            r = "rewardedVideo"; // r: Rewarded.
-            
+    private const string const
+        b = "banner", // b: Banner.
+        g = "3767230", // g: Game.
+        i = "video", // i: Interstitial.
+        r = "rewardedVideo"; // r: Rewarded.
+        
 #else // UNITY_ANDROID
-        private const string
-            b = "banner", // b: Banner.
-            g = "3767231", // g: Game.
-            i = "video", // i: Interstitial.
-            r = "rewardedVideo"; // r: Rewarded.
+    private const string
+        b = "banner", // b: Banner.
+        g = "3767231", // g: Game.
+        i = "video", // i: Interstitial.
+        r = "rewardedVideo"; // r: Rewarded.
 #endif
 
-        private const bool t = true; // t: Test.
+    private const bool t = true; // t: Test.
 
-        private readonly System.NotImplementedException NIE = new(); // NIE: Not Implemented Exception.
+    private readonly System.NotImplementedException NIE = new(); // NIE: Not Implemented Exception.
 
-        private readonly WaitForSeconds wFS = Siren.wFS; // wFS: Wait For Seconds.
+    private readonly WaitForSeconds wFS = Siren.wFS; // wFS: Wait For Seconds.
 
-        private static int s = -1; // s: Scene.
+    private static int s = -1; // s: Scene.
 
-        public static bool
-            iIL = false, // iIL: is Interstitial Loaded.
-            iRL = false, // iRL: is Rewarded Loaded.
+    public static bool
+        iIL = false, // iIL: is Interstitial Loaded.
+        iRL = false, // iRL: is Rewarded Loaded.
 
-            // iBS = false, // iBS: Is Banner Showing.
-            // iIS = false, // iIS: Is Interstitial Showing.
-            iRS = false; // iRS: Is Rewarded Showing.
+        // iBS = false, // iBS: Is Banner Showing.
+        // iIS = false, // iIS: Is Interstitial Showing.
+        iRS = false; // iRS: Is Rewarded Showing.
 
-        public static Monetization m; // m: Monetization.
+    public static Monetization m; // m: Monetization.
 
-        // Murat Sancak
+    // Murat Sancak
 
-        public static bool IBL => Advertisement.Banner.isLoaded; // IBR: Is Banner Loaded.
-        public static bool II => Advertisement.isInitialized; // II: Is Initialized.
+    public static bool IBL => Advertisement.Banner.isLoaded; // IBR: Is Banner Loaded.
+    public static bool II => Advertisement.isInitialized; // II: Is Initialized.
 
-        // Murat Sancak
+    // Murat Sancak
 
-        private void Awake()
+    private void Awake()
+    {
+        if(m is null)
+            m=this;
+        else if(m!=this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(m);
+    }
+
+    private void Start() => StartCoroutine(Initialize());
+
+    // Murat Sancak
+
+    private IEnumerator Initialize()
+    {
+        while(true)
         {
-            if (m is null)
-                m = this;
-            else if (m != this)
-                Destroy(gameObject);
-            DontDestroyOnLoad(m);
-        }
-
-        private void Start() => StartCoroutine(Initialize());
-
-        // Murat Sancak
-
-        private IEnumerator Initialize()
-        {
-            while (true)
-            {
-                if (!IAP.HR())
-                    if (!II)
-                        Advertisement.Initialize(g, t, m);
+            if(!IAP.HR())
+                if(!II)
+                    Advertisement.Initialize(g,t,m);
+                else
+                {
+                    if(!IBL)
+                        Advertisement.Banner.Load(b);
                     else
                     {
-                        if (!IBL)
-                            Advertisement.Banner.Load(b);
-                        else
-                        {
-                            Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-                            Advertisement.Banner.Show(b);
-                        }
-
-                        if (!iIL)
-                            Advertisement.Load(i, m);
-
-                        if (!iRL)
-                            Advertisement.Load(r, m);
+                        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+                        Advertisement.Banner.Show(b);
                     }
 
-                yield return wFS;
-            }
+                    if(!iIL)
+                        Advertisement.Load(i,m);
+
+                    if(!iRL)
+                        Advertisement.Load(r,m);
+                }
+
+            yield return wFS;
         }
+    }
 
-        // Murat Sancak
+    // Murat Sancak
 
-        public static void Hide() => Advertisement.Banner.Hide();
+    public static void Hide() => Advertisement.Banner.Hide();
 
-        public static void Interstitial(int s)
+    public static void Interstitial(int s)
+    {
+        Monetization.s=s;
+
+        if(!iIL||IAP.HR())
+            Scene.Reward(s);
+        else
+            Advertisement.Show(i,m);
+    }
+
+    public static void Rewarded()
+    {
+        if(IAP.HR())
+            Siren.Coin(1);
+        else if(iRL)
+            Advertisement.Show(r,m);
+    }
+
+    // Murat Sancak
+
+    public void OnInitializationComplete()
+    {
+        if(!IBL)
+            Advertisement.Banner.Load(b);
+        else
         {
-            if (!iIL || IAP.HR())
-                Scene.Reward(Monetization.s = s);
-            else
-            {
-                Monetization.s = s;
-
-                Advertisement.Show(i, m);
-            }
+            Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+            Advertisement.Banner.Show(b);
         }
+    }
 
-        public static void Rewarded()
+    public void OnInitializationFailed(UnityAdsInitializationError uAIE,string f) => Advertisement.Initialize(g,t,m); // uAIE: Unity Ads Initialization Error, f: Failure.
+
+    public void OnUnityAdsAdLoaded(string a) // a: Advertisement.
+    {
+        switch(a)
         {
-            if (IAP.HR())
-                Siren.Coin(1);
-            else if (iRL)
-                Advertisement.Show(r, m);
-        }
-
-        // Murat Sancak
-
-        public void OnInitializationComplete()
-        {
-            if (!IBL)
-                Advertisement.Banner.Load(b);
-            else
-            {
+            case b:
                 Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
                 Advertisement.Banner.Show(b);
-            }
+                break;
+            case i:
+                iIL=true;
+                break;
+            case r:
+                iRL=true;
+                break;
+            default:
+                break;
         }
+    }
 
-        public void OnInitializationFailed(UnityAdsInitializationError uAIE, string f) => Advertisement.Initialize(g, t, m); // uAIE: Unity Ads Initialization Error, f: Failure.
-
-        public void OnUnityAdsAdLoaded(string a) // a: Advertisement.
+    public void OnUnityAdsFailedToLoad(string a,UnityAdsLoadError uALE,string f) // a: Advertisement, uALE: Unity Ads Load Error, f: Failure.
+    {
+        switch(a)
         {
-            switch (a)
-            {
-                case b:
+            case b:
+                Advertisement.Banner.Load();
+                Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+                Advertisement.Banner.Show(b);
+                break;
+            case i:
+                iIL=false;
+                Advertisement.Load(i,m);
+                break;
+            case r:
+                iRL=false;
+                Advertisement.Load(r,m);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void OnUnityAdsShowClick(string a) => throw NIE; // a: Advertisement.
+
+    public void OnUnityAdsShowComplete(string a,UnityAdsShowCompletionState uASCS) // a: Advertisement, uASCS: Unity Ads Show Completion State.
+    {
+        switch(a)
+        {
+            case b:
+                // iBS = false;
+
+                if(!IBL)
+                    Advertisement.Banner.Load(b);
+                else
+                {
                     Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
                     Advertisement.Banner.Show(b);
-                    break;
-                case i:
-                    iIL = true;
-                    break;
-                case r:
-                    iRL = true;
-                    break;
-                default:
-                    break;
-            }
-        }
+                }
+                break;
+            case i:
+                if(!iIL)
+                    Advertisement.Load(i,m);
 
-        public void OnUnityAdsFailedToLoad(string a, UnityAdsLoadError uALE, string f) // a: Advertisement, uALE: Unity Ads Load Error, f: Failure.
+                // iIS = false;
+
+                Scene.Reward(s);
+                break;
+            case r:
+                if(!iRL)
+                    Advertisement.Load(r,m);
+
+                if(iRS&&uASCS is UnityAdsShowCompletionState.COMPLETED)
+                    Siren.Coin(1);
+                else // showCompletionState is UnityAdsShowCompletionState.SKIPPED || showCompletionState is UnityAdsShowCompletionState.UNKNOWN
+                    Handheld.Vibrate();
+
+                iRS=false;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void OnUnityAdsShowFailure(string a,UnityAdsShowError uASE,string f) // a: Advertisement, uASE: Unity Ads Show Error, f: Failure.
+    {
+        switch(a)
         {
-            switch (a)
-            {
-                case b:
-                    Advertisement.Banner.Load();
+            case b:
+                // iBS = false;
+
+                if(!IBL)
+                    Advertisement.Banner.Load(b);
+                else
+                {
                     Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
                     Advertisement.Banner.Show(b);
-                    break;
-                case i:
-                    iIL = false;
+                }
+                break;
+            case i:
+                Handheld.Vibrate();
 
-                    Advertisement.Load(i, m);
-                    break;
-                case r:
-                    iRL = false;
+                if(!iIL)
+                    Advertisement.Load(i,m);
 
-                    Advertisement.Load(r, m);
-                    break;
-                default:
-                    break;
-            }
+                // iIS = false;
+                break;
+            case r:
+                Handheld.Vibrate();
+
+                if(!iRL)
+                    Advertisement.Load(r,m);
+
+                iRS=false;
+                break;
+            default:
+                break;
         }
+    }
 
-        public void OnUnityAdsShowClick(string a) => throw NIE; // a: Advertisement.
-
-        public void OnUnityAdsShowComplete(string a, UnityAdsShowCompletionState uASCS) // a: Advertisement, uASCS: Unity Ads Show Completion State.
+    public void OnUnityAdsShowStart(string a) // a: Advertisement.
+    {
+        switch(a)
         {
-            switch (a)
-            {
-                case b:
-                    // iBS = false;
+            case b:
+                Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
 
-                    if (!IBL)
-                        Advertisement.Banner.Load(b);
-                    else
-                    {
-                        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-                        Advertisement.Banner.Show(b);
-                    }
-                    break;
-                case i:
-                    if (!iIL)
-                        Advertisement.Load(i, m);
-
-                    // iIS = false;
-
-                    Scene.Reward(s);
-                    break;
-                case r:
-                    if (!iRL)
-                        Advertisement.Load(r, m);
-
-                    if (iRS && uASCS is UnityAdsShowCompletionState.COMPLETED)
-                        Siren.Coin(1);
-                    else // showCompletionState is UnityAdsShowCompletionState.SKIPPED || showCompletionState is UnityAdsShowCompletionState.UNKNOWN
-                        Handheld.Vibrate();
-
-                    iRS = false;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public void OnUnityAdsShowFailure(string a, UnityAdsShowError uASE, string f) // a: Advertisement, uASE: Unity Ads Show Error, f: Failure.
-        {
-            switch (a)
-            {
-                case b:
-                    // iBS = false;
-
-                    if (!IBL)
-                        Advertisement.Banner.Load(b);
-                    else
-                    {
-                        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-                        Advertisement.Banner.Show(b);
-                    }
-                    break;
-                case i:
-                    Handheld.Vibrate();
-
-                    if (!iIL)
-                        Advertisement.Load(i, m);
-
-                    // iIS = false;
-                    break;
-                case r:
-                    Handheld.Vibrate();
-
-                    if (!iRL)
-                        Advertisement.Load(r, m);
-
-                    iRS = false;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public void OnUnityAdsShowStart(string a) // a: Advertisement.
-        {
-            switch (a)
-            {
-                case b:
-                    Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-
-                    // iBS = true;
-                    break;
-                case i:
-                    // iIS = true;
-                    break;
-                case r:
-                    iRS = true;
-                    break;
-                default:
-                    break;
-            }
+                // iBS = true;
+                break;
+            case i:
+                // iIS = true;
+                break;
+            case r:
+                iRS=true;
+                break;
+            default:
+                break;
         }
     }
 }
