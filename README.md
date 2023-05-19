@@ -1,6 +1,9 @@
 # <a href="https://play.google.com/store/apps/details?id=com.murasanca.Siren" target="_blank">Siren</a>
-It's not road rage if you have Siren.
+<img alt="Murat Sancak" src="https://raw.githubusercontent.com/murasanca/Database/main/Siren/Siren1920x1080.png">
 <hr>
+<p align="center">It's not road rage if you have Siren.</p>
+<hr>
+<p align="center">
 Try something new.
 <br>
 Put an end to your boredom.
@@ -24,11 +27,15 @@ Read something new.
 Make the entertainment educational and choose a good siren, a recorded voice, or a siren that summarizes a nonfiction topic; they may come in handy in the next knowledge game.
 <br><br>
 If you have sirens, you can give Siren 5 stars.
+</p>
 <hr>
-<a href="mailto:murasanca@pm.me" target="_blank">murasanca@pm.me</a>
-<br><br>
-Murat Sancak
-<br>
-@murasanca
-<br>
-∞
+<img alt="Murat Sancak" src="https://raw.githubusercontent.com/murasanca/Database/main/MS/msW1024x256.png">
+<p align="center">
+	<a href="mailto:murasanca@pm.me" target="_blank">murasanca@pm.me</a>
+	<br>
+	Murat Sancak
+	<br>
+	<a href="https://www.murasanca.com" target="_blank">murasanca</a>
+	<br>
+	∞
+</p>
