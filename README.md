@@ -1,4 +1,4 @@
-# <a href="https://play.google.com/store/apps/details?id=com.murasanca.Siren" target="_blank">Siren</a>
+# Siren
 <img alt="Siren" src="https://raw.githubusercontent.com/murasanca/Database/main/Siren/Siren1920x1080.png">
 <hr>
 <p align="center">It's not road rage if you have Siren.</p>
